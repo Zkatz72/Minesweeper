@@ -266,7 +266,7 @@ class MineSweeperGame:
         self._game_over = True
         self._draw_reset_button(game_over=True)
         pygame.draw.rect(surface, color, tile)
-        mine_image = pygame.transform.scale(pygame.image.load("bomb.png"), (tile_side, tile_side))
+        mine_image = pygame.transform.scale(pygame.image.load("assets/bomb.png"), (tile_side, tile_side))
         surface.blit(mine_image, (x + (border_side - tile_side) // 2, y + (border_side - tile_side) // 2))
 
     def _draw_flag_tile(self, x,y, tile_size):
@@ -282,7 +282,7 @@ class MineSweeperGame:
         pygame.draw.rect(surface, pygame.Color(0, 0, 0), tile_border)
 
         pygame.draw.rect(surface,pygame.Color(214,214,214), tile)
-        mine_image = pygame.transform.scale(pygame.image.load("flag.png"), (tile_side, tile_side))
+        mine_image = pygame.transform.scale(pygame.image.load("assets/flag.png"), (tile_side, tile_side))
         surface.blit(mine_image, (x + (border_side - tile_side) // 2, y + (border_side - tile_side) // 2))
 
 
