@@ -112,6 +112,7 @@ class MineSweeperGame:
                         self._game_over = False
                         self._draw_timer()
                         self._draw_reset_button()
+                        self._flagged = set()
                         return True
                     return False
 
