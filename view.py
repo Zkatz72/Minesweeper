@@ -56,13 +56,15 @@ class MineSweeperGame:
 
 
             if self._started and not self._game_over:
-                self._draw_reset_button()
                 seconds-=1
 
             if seconds == 0:
                 self._time += 1
+                self._draw_reset_button()
                 self._draw_timer()
                 seconds = 30
+
+            pygame.display.flip()
 
         pygame.quit()
 
