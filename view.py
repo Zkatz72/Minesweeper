@@ -76,13 +76,16 @@ class MineSweeperGame:
 
 
                     cell = self._get_cell_clicked(*pygame.mouse.get_pos())
+                    ctrl_click = event.button == 1 and pygame.key.get_mods() & pygame.KMOD_CTRL
+                    right_click = event.button == 3 or ctrl_click
+                    left_click = event.button == 1 and not ctrl_click
                     if cell:
-                        if not self._game_over and not self._started and event.button == 1:
+                        if not self._game_over and not self._started and left_click:
                             self._draw_reset_button(tile_clicked=True)
                             self._started = True
                             self._state = Minesweeper(self._rows,self._columns, self._mines, *cell)
 
-                        elif not self._game_over and event.button == 1:
+                        elif not self._game_over and left_click:
                             if cell not in self._flagged:
                                 self._state.uncover_tile(*cell)
                                 self._draw_reset_button(tile_clicked = True)
@@ -91,7 +94,7 @@ class MineSweeperGame:
                                     self._draw_reset_button(won= True)
                                     self._game_over = True
 
-                        elif not self._game_over and self._started and event.button == 3:
+                        elif not self._game_over and self._started and right_click:
 
                             if self._state.is_flagged(*cell):
                                 self._state.remove_flag(*cell)
